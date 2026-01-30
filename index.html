@@ -5,24 +5,84 @@
   <title>The Cris Community</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      background-color: #020617;
-      color: white;
+      margin: 0;
       font-family: Arial, sans-serif;
+      color: white;
+      min-height: 200vh;
+      background: linear-gradient(
+        270deg,
+        #ff0000,
+        #ff7f00,
+        #ffff00,
+        #00ff00,
+        #0000ff,
+        #4b0082,
+        #8b00ff
+      );
+      background-size: 1400% 1400%;
+      animation: rainbow 20s ease infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* MENÚ */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+
+    nav button {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      padding: 12px 28px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    nav button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.08);
+    }
+
+    /* SECCIÓN HERO */
+    .hero {
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      padding-top: 80px;
+      text-align: center;
     }
 
     #typing {
-      font-size: 28px;
+      font-size: 32px;
       border-right: 3px solid white;
-      padding-right: 5px;
+      padding-right: 6px;
       white-space: nowrap;
       overflow: hidden;
       animation: blink 0.8s infinite;
+      max-width: 90%;
     }
 
     @keyframes blink {
@@ -30,15 +90,48 @@
       50% { border-color: transparent; }
       100% { border-color: white; }
     }
+
+    /* SECCIÓN INFO */
+    .info {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      background: rgba(0, 0, 0, 0.45);
+      text-align: center;
+    }
+
+    .info p {
+      font-size: 26px;
+      max-width: 900px;
+      line-height: 1.4;
+    }
   </style>
 </head>
 <body>
 
-  <div id="typing"></div>
+  <!-- MENÚ -->
+  <nav>
+    <button onclick="location.href='juegos.html'">Juegos</button>
+    <button onclick="location.href='equipo.html'">Equipo</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div id="typing"></div>
+  </section>
+
+  <!-- INFO AL BAJAR -->
+  <section class="info">
+    <p>
+      <strong>The Cris Community</strong> es una desarrolladora de videojuegos en Roblox
+    </p>
+  </section>
 
   <script>
     const text = "Bienvenido a la página oficial de The Cris Community";
-    const speed = 70; // velocidad de escritura
+    const speed = 70;
     let index = 0;
 
     function typeWriter() {
